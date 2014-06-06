@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="demoflash_0001" default="all">
+  
+  
+  <property file="demoflash_0001.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module DemoFlash_0001 -->
+  
+  <dirname property="module.demoflash_0001.basedir" file="${ant.file}"/>
+  
+  
+  
+  <property name="compiler.args.demoflash_0001" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="demoflash_0001.output.dir" value="${module.demoflash_0001.basedir}/out/production/DemoFlash_0001"/>
+  <property name="demoflash_0001.testoutput.dir" value="${module.demoflash_0001.basedir}/out/test/DemoFlash_0001"/>
+  
+  <path id="demoflash_0001.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="demoflash_0001.module.production.classpath"/>
+  
+  <path id="demoflash_0001.runtime.production.module.classpath">
+    <pathelement location="${demoflash_0001.output.dir}"/>
+  </path>
+  
+  <path id="demoflash_0001.module.classpath">
+    <pathelement location="${demoflash_0001.output.dir}"/>
+  </path>
+  
+  <path id="demoflash_0001.runtime.module.classpath">
+    <pathelement location="${demoflash_0001.testoutput.dir}"/>
+    <pathelement location="${demoflash_0001.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.demoflash_0001">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.demoflash_0001">
+    <patternset refid="excluded.from.module.demoflash_0001"/>
+  </patternset>
+  
+  <path id="demoflash_0001.module.sourcepath">
+    <dirset dir="${module.demoflash_0001.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.demoflash_0001" depends="compile.module.demoflash_0001.production,compile.module.demoflash_0001.tests" description="Compile module DemoFlash_0001"/>
+  
+  <target name="compile.module.demoflash_0001.production" description="Compile module DemoFlash_0001; production classes">
+    <mkdir dir="${demoflash_0001.output.dir}"/>
+    <javac destdir="${demoflash_0001.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.demoflash_0001}"/>
+      <bootclasspath refid="demoflash_0001.module.bootclasspath"/>
+      <classpath refid="demoflash_0001.module.production.classpath"/>
+      <src refid="demoflash_0001.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.demoflash_0001"/>
+    </javac>
+    
+    <copy todir="${demoflash_0001.output.dir}">
+      <fileset dir="${module.demoflash_0001.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.demoflash_0001.tests" depends="compile.module.demoflash_0001.production" description="compile module DemoFlash_0001; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.demoflash_0001" description="cleanup module">
+    <delete dir="${demoflash_0001.output.dir}"/>
+    <delete dir="${demoflash_0001.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.demoflash_0001" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.demoflash_0001" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
