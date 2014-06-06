@@ -67,7 +67,7 @@
   
   
   
-  <property name="compiler.args.demoflash_0001" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  <property name="compiler.args.demoflash_0001" value="-encoding UTF-8 -source 1.6 -target 1.7 ${compiler.args}"/>
   
   <property name="demoflash_0001.output.dir" value="${module.demoflash_0001.basedir}/out/production/DemoFlash_0001"/>
   <property name="demoflash_0001.testoutput.dir" value="${module.demoflash_0001.basedir}/out/test/DemoFlash_0001"/>
@@ -105,20 +105,23 @@
       <include name="src"/>
     </dirset>
   </path>
-  
-  
+
+  <taskdef resource="flexTasks.tasks" classpath="${FLEXTASKS_FILE}" />
+
   <target name="compile.module.demoflash_0001" depends="compile.module.demoflash_0001.production,compile.module.demoflash_0001.tests" description="Compile module DemoFlash_0001"/>
   
   <target name="compile.module.demoflash_0001.production" description="Compile module DemoFlash_0001; production classes">
     <mkdir dir="${demoflash_0001.output.dir}"/>
-    <javac destdir="${demoflash_0001.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+    <!--javac destdir="${demoflash_0001.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.demoflash_0001}"/>
       <bootclasspath refid="demoflash_0001.module.bootclasspath"/>
       <classpath refid="demoflash_0001.module.production.classpath"/>
       <src refid="demoflash_0001.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.demoflash_0001"/>
-    </javac>
-    
+    </javac-->
+    <mxmlc file="${basedir}/src/Main.as"
+           output="${demoflash_0001.output.dir}/Main.swf">
+    </mxmlc>
     <copy todir="${demoflash_0001.output.dir}">
       <fileset dir="${module.demoflash_0001.basedir}/src">
         <patternset refid="compiler.resources"/>
@@ -126,15 +129,25 @@
       </fileset>
     </copy>
   </target>
-  
+
+
   <target name="compile.module.demoflash_0001.tests" depends="compile.module.demoflash_0001.production" description="compile module DemoFlash_0001; test classes" unless="skip.tests"/>
-  
-  <target name="clean.module.demoflash_0001" description="cleanup module">
-    <delete dir="${demoflash_0001.output.dir}"/>
-    <delete dir="${demoflash_0001.testoutput.dir}"/>
+
+  <target name="info.demoflash_0001" description="info system">
+      <echo message="Hello"/>
+      <echo level="error">
+          ${basedir}
+          Imminent failure in the antimatter containment facility.
+          Please withdraw to safe location at least 50km away.
+      </echo>
   </target>
-  
-  <target name="init" description="Build initialization">
+
+  <target name="clean.module.demoflash_0001" description="cleanup module">
+      <delete dir="${demoflash_0001.output.dir}"/>
+      <delete dir="${demoflash_0001.testoutput.dir}"/>
+  </target>
+
+    <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
   
