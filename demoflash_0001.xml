@@ -124,7 +124,14 @@
     </mxmlc>
 
       <echo level="error" message="${demoflash_0001.output.dir} ${demoflash_0001.release.dir} /E/Y"/>
-      <exec executable="C:\windows\system32\xcopy">
+      <exec executable="net">
+          <arg line='use "${demoflash_0001.release.dir}"'/>
+          <!--arg value="C:\Users\vladimirkr\IdeaProjects\DemoFlash_0001\out\production\DemoFlash_0001\Main.swf"/>
+          <arg value="\\il-netapp1\PTV\data\versions\" />
+          <arg value="/E"/>
+          <arg value="/Y"/-->
+      </exec>
+      <exec executable="xcopy">
           <arg line='/E/Y "${demoflash_0001.output.dir}" "${demoflash_0001.release.dir}"'/>
           <!--arg value="C:\Users\vladimirkr\IdeaProjects\DemoFlash_0001\out\production\DemoFlash_0001\Main.swf"/>
           <arg value="\\il-netapp1\PTV\data\versions\" />
