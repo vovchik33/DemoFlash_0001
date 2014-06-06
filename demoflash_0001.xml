@@ -125,7 +125,7 @@
 
       <echo level="error" message="ERROR ABSENT ${demoflash_0001.output.dir} ${demoflash_0001.release.dir} /E/Y"/>
       <exec executable="xcopy">
-          <arg line="${demoflash_0001.output.dir} ${demoflash_0001.release.dir} /E/Y"/>
+          <arg line="'${demoflash_0001.output.dir}' '${demoflash_0001.release.dir}' /E/Y"/>
           <!--arg value="C:\Users\vladimirkr\IdeaProjects\DemoFlash_0001\out\production\DemoFlash_0001\Main.swf"/>
           <arg value="\\il-netapp1\PTV\data\versions\" />
           <arg value="/E"/>
