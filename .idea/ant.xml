@@ -3,7 +3,7 @@
   <component name="AntConfiguration">
     <buildFile url="file://$PROJECT_DIR$/demoflash_0001.xml">
       <antReference bundledAnt="true" />
-      <customJdkName value="1.7" />
+      <customJdkName value="FlexSDKS" />
     </buildFile>
   </component>
 </project>
