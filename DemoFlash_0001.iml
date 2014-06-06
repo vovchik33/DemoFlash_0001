@@ -4,6 +4,17 @@
     <configurations>
       <configuration name="DemoFlash_0001" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/DemoFlash_0001">
         <dependencies target-player="13.0">
+          <entries>
+            <entry library-id="d95de376-7d7c-48fa-aee7-ce621226f64d">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="c1bd7751-7a60-451f-b5d6-9eade525a4b0">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="de8359d2-ec49-4485-98aa-b3e6d9cb6b6d">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
           <sdk name="FlexSDKS" />
         </dependencies>
         <compiler-options />
@@ -21,6 +32,36 @@
     </content>
     <orderEntry type="jdk" jdkName="FlexSDKS" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="d95de376-7d7c-48fa-aee7-ce621226f64d" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/debugger/as3commons-logging-2.7.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="c1bd7751-7a60-451f-b5d6-9eade525a4b0" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/third/greensock.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="de8359d2-ec49-4485-98aa-b3e6d9cb6b6d" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/debugger/MonsterDebugger.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
