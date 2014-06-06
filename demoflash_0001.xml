@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="demoflash_0001" default="all">
-  
-  
+
+
   <property file="demoflash_0001.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
-  <!-- 
+  <!--
   <property name="skip.tests" value="true"/>
    -->
-  
+
   <!-- Compiler options -->
-  
+
   <property name="compiler.debug" value="on"/>
   <property name="compiler.generate.no.warnings" value="off"/>
   <property name="compiler.args" value=""/>
@@ -57,49 +57,49 @@
     <exclude name="**/?*.kt"/>
     <exclude name="**/?*.clj"/>
   </patternset>
-  
+
   <!-- Modules -->
-  
-  
+
+
   <!-- Module DemoFlash_0001 -->
-  
+
   <dirname property="module.demoflash_0001.basedir" file="${ant.file}"/>
-  
-  
-  
+
+
+
   <property name="compiler.args.demoflash_0001" value="-encoding UTF-8 -source 1.6 -target 1.7 ${compiler.args}"/>
-  
+
   <property name="demoflash_0001.output.dir" value="${module.demoflash_0001.basedir}/out/production/DemoFlash_0001"/>
   <property name="demoflash_0001.testoutput.dir" value="${module.demoflash_0001.basedir}/out/test/DemoFlash_0001"/>
-  
+
   <path id="demoflash_0001.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
   </path>
-  
+
   <path id="demoflash_0001.module.production.classpath"/>
-  
+
   <path id="demoflash_0001.runtime.production.module.classpath">
     <pathelement location="${demoflash_0001.output.dir}"/>
   </path>
-  
+
   <path id="demoflash_0001.module.classpath">
     <pathelement location="${demoflash_0001.output.dir}"/>
   </path>
-  
+
   <path id="demoflash_0001.runtime.module.classpath">
     <pathelement location="${demoflash_0001.testoutput.dir}"/>
     <pathelement location="${demoflash_0001.output.dir}"/>
   </path>
-  
-  
+
+
   <patternset id="excluded.from.module.demoflash_0001">
     <patternset refid="ignored.files"/>
   </patternset>
-  
+
   <patternset id="excluded.from.compilation.demoflash_0001">
     <patternset refid="excluded.from.module.demoflash_0001"/>
   </patternset>
-  
+
   <path id="demoflash_0001.module.sourcepath">
     <dirset dir="${module.demoflash_0001.basedir}">
       <include name="src"/>
@@ -109,9 +109,18 @@
   <taskdef resource="flexTasks.tasks" classpath="${FLEXTASKS_FILE}" />
 
   <target name="compile.module.demoflash_0001" depends="compile.module.demoflash_0001.production,compile.module.demoflash_0001.tests" description="Compile module DemoFlash_0001"/>
-  
+
   <target name="compile.module.demoflash_0001.production" description="Compile module DemoFlash_0001; production classes">
     <mkdir dir="${demoflash_0001.output.dir}"/>
+    <mxmlc file="${basedir}/src/Main.as"
+           output="${demoflash_0001.output.dir}/Main.swf">
+        <compiler.library-path dir="${basedir}" append="true">
+            <include name="lib/third/greensock.swc" />
+            <include name="lib/debugger/MonsterDebugger.swc" />
+            <include name="lib/debugger/as3commons-logging-2.7.swc" />
+        </compiler.library-path>
+
+    </mxmlc>
     <!--javac destdir="${demoflash_0001.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.demoflash_0001}"/>
       <bootclasspath refid="demoflash_0001.module.bootclasspath"/>
@@ -119,15 +128,12 @@
       <src refid="demoflash_0001.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.demoflash_0001"/>
     </javac-->
-    <mxmlc file="${basedir}/src/Main.as"
-           output="${demoflash_0001.output.dir}/Main.swf">
-    </mxmlc>
-    <copy todir="${demoflash_0001.output.dir}">
+    <!--copy todir="${demoflash_0001.output.dir}">
       <fileset dir="${module.demoflash_0001.basedir}/src">
         <patternset refid="compiler.resources"/>
         <type type="file"/>
       </fileset>
-    </copy>
+    </copy-->
   </target>
 
 
@@ -150,10 +156,10 @@
     <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
-  
+
   <target name="clean" depends="clean.module.demoflash_0001" description="cleanup all"/>
-  
+
   <target name="build.modules" depends="init, clean, compile.module.demoflash_0001" description="build all modules"/>
-  
+
   <target name="all" depends="build.modules" description="build all"/>
 </project>

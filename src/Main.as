@@ -28,7 +28,7 @@ public class Main extends Sprite {
         MonsterDebugger.initialize(this);
         LOGGER_FACTORY.setup = new LevelTargetSetup(mergeTargets(new MonsterDebugger3TraceTarget(), new TextFieldTarget(null,textField)), LogSetupLevel.DEBUG);
 
-        getLogger(this).info("Hello, World");
+        getLogger(this).info("Hello, World from Debugger");
     }
 }
 }

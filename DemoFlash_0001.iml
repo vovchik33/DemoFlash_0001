@@ -22,6 +22,26 @@
         <packaging-android />
         <packaging-ios />
       </configuration>
+      <configuration name="DemoFlash_0001Production" pure-as="true" main-class="Main" output-file="DemoFlash_0001Production.swf" output-folder="$MODULE_DIR$/out/production/DemoFlash_0001">
+        <dependencies target-player="13.0">
+          <entries>
+            <entry library-id="8b4cc76d-c830-48ff-94ce-60cb10f7a140">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="cd7454e8-dfcd-4d17-a126-1b7c2dc4285a">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="b689e593-0646-4190-a69d-ae28dd6c7a3e">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="FlexSDKS" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android />
+        <packaging-ios />
+      </configuration>
     </configurations>
     <compiler-options />
   </component>
@@ -55,6 +75,36 @@
     <orderEntry type="module-library" exported="">
       <library type="flex">
         <properties id="de8359d2-ec49-4485-98aa-b3e6d9cb6b6d" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/debugger/MonsterDebugger.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="8b4cc76d-c830-48ff-94ce-60cb10f7a140" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/debugger/as3commons-logging-2.7.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="cd7454e8-dfcd-4d17-a126-1b7c2dc4285a" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/third/greensock.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="b689e593-0646-4190-a69d-ae28dd6c7a3e" />
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/debugger/MonsterDebugger.swc!/" />
         </CLASSES>
