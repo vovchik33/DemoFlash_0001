@@ -69,8 +69,9 @@
 
   <property name="compiler.args.demoflash_0001" value="-encoding UTF-8 -source 1.6 -target 1.7 ${compiler.args}"/>
 
-  <property name="demoflash_0001.output.dir" value="${module.demoflash_0001.basedir}/out/production/DemoFlash_0001"/>
-  <property name="demoflash_0001.testoutput.dir" value="${module.demoflash_0001.basedir}/out/test/DemoFlash_0001"/>
+  <property name="demoflash_0001.output.dir" value="${module.demoflash_0001.basedir}\out\production\DemoFlash_0001"/>
+  <property name="demoflash_0001.release.dir" value="\\il-netapp1\PTV\data\versions\Temp"/>
+  <property name="demoflash_0001.testoutput.dir" value="${module.demoflash_0001.basedir}\out\test\DemoFlash_0001"/>
 
   <path id="demoflash_0001.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
@@ -112,22 +113,32 @@
 
   <target name="compile.module.demoflash_0001.production" description="Compile module DemoFlash_0001; production classes">
     <mkdir dir="${demoflash_0001.output.dir}"/>
-    <mxmlc file="${basedir}/src/Main.as"
-           output="${demoflash_0001.output.dir}/Main.swf">
+    <mxmlc file="${basedir}\src\Main.as"
+           output="${demoflash_0001.output.dir}\Main.swf">
         <compiler.library-path dir="${basedir}" append="true">
-            <include name="lib/third/greensock.swc" />
-            <include name="lib/debugger/MonsterDebugger.swc" />
-            <include name="lib/debugger/as3commons-logging-2.7.swc" />
+            <include name="lib\third\greensock.swc" />
+            <include name="lib\debugger\MonsterDebugger.swc" />
+            <include name="lib\debugger\as3commons-logging-2.7.swc" />
         </compiler.library-path>
 
     </mxmlc>
-    <!--javac destdir="${demoflash_0001.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
-      <compilerarg line="${compiler.args.demoflash_0001}"/>
-      <bootclasspath refid="demoflash_0001.module.bootclasspath"/>
-      <classpath refid="demoflash_0001.module.production.classpath"/>
-      <src refid="demoflash_0001.module.sourcepath"/>
-      <patternset refid="excluded.from.compilation.demoflash_0001"/>
-    </javac-->
+
+      <echo level="error" message="${demoflash_0001.output.dir}"/>
+      <exec executable="xcopy">
+          <arg line="${demoflash_0001.output.dir} ${demoflash_0001.release.dir} /E/Y"/>
+          <!--arg value="C:\Users\vladimirkr\IdeaProjects\DemoFlash_0001\out\production\DemoFlash_0001\Main.swf"/>
+          <arg value="\\il-netapp1\PTV\data\versions\" />
+          <arg value="/E"/>
+          <arg value="/Y"/-->
+      </exec>
+
+      <!--javac destdir="${demoflash_0001.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+        <compilerarg line="${compiler.args.demoflash_0001}"/>
+        <bootclasspath refid="demoflash_0001.module.bootclasspath"/>
+        <classpath refid="demoflash_0001.module.production.classpath"/>
+        <src refid="demoflash_0001.module.sourcepath"/>
+        <patternset refid="excluded.from.compilation.demoflash_0001"/>
+      </javac-->
     <!--copy todir="${demoflash_0001.output.dir}">
       <fileset dir="${module.demoflash_0001.basedir}/src">
         <patternset refid="compiler.resources"/>
